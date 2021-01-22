@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    
+    <ion-card-header>  
+       
+      <ion-card-title>{{product.name}} 
+
+        <ion-text color="primary"  class="ion-float-right"> {{ product.price | currency: 'TND ' }} </ion-text>
+
+         </ion-card-title> 
+         <br>
+      <ion-text  color="success" class="ion-float-right" *ngIf="product.quantity> 0" >In Stock </ion-text>
+      <ion-text  color="danger"  class="ion-float-right" *ngIf="product.quantity == 0" >not available </ion-text>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-avatar slot="start" >
+        <img [src]="product.picture">
+      </ion-avatar>
+      <br>
+      <p>productCode</p>
+        <ion-text>
+          {{product.productCode}}
+      
+        </ion-text><br>
+
+      <br>  
+<p>quantity</p>
+      <ion-text>
+        {{product.quantity}}
+    
+      </ion-text><br>
+
+    <br>  
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+         
+      
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,137 @@
+
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Add Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="productForm" (ngSubmit)="submit()">
+
+    <ion-list>
+      
+      <ion-item>
+        <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
+      </ion-item>
+      <!-- Error messages -->
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+            Name is required.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
+             Name should be min 2 chars long.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.maxlength">
+          Name should be max 30 chars long.
+      </span>
+      
+  
+      <ion-item>
+        <ion-textarea rows="4" formControlName="productCode" placeholder="productCode"></ion-textarea>
+      </ion-item>
+      <!-- Error messages -->
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.productCode.errors?.required">
+        productCode is required.
+     </span>
+     <span class="error ion-padding" *ngIf="isSubmitted && errorControl.productCode.errors?.minlength">
+      productCode should be min 8 chars long.
+     </span>
+     <span class="error ion-padding" *ngIf="isSubmitted && errorControl.productCode.errors?.maxlength">
+      productCode should be max 100 chars long.
+  </span>
+  
+      <ion-item lines="none">
+        <input type="file" (change)="chooseFile($event)" required>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.picture.errors?.required">
+        photo is required.
+     </span>
+      <ion-item>
+        <ion-select  formControlName="salesUnit" >
+          <ion-select-option *ngFor="let item of salesUnit" [value]="item.libelle">
+            {{item.libelle}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+        sales Unit is required.
+     </span>
+     <ion-item>
+      <ion-select (ionChange)="fetchSubCat($event)" >
+        <ion-select-option *ngFor="let item of Categories" [value]="item.id">
+          {{item.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+     <ion-item>
+      <ion-select  formControlName="subCat" >
+        <ion-select-option *ngFor="let item of subCat" [value]="item.name">
+          {{item.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+      <ion-item>
+        <ion-input type="number" formControlName="price" placeholder="Price"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
+        price is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
+        Only numerical values allowed.
+      </span>
+  
+      <ion-item>
+        <ion-input type="number" formControlName="quantity" placeholder="quantity"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
+        quantity is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
+        Only numerical values allowed.
+      </span>
+
+
+      <ion-item>
+        <ion-input formControlName="brand" type="text" placeholder="Brand"></ion-input>
+      </ion-item>
+      <!-- Error messages -->
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brand.errors?.required">
+            brand is required.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brand.errors?.minlength">
+             brand should be min 2 chars long.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.brand.errors?.maxlength">
+          brand should be max 30 chars long.
+      </span>
+
+
+      <ion-item>
+        <ion-input formControlName="model" type="text" placeholder="Model"></ion-input>
+      </ion-item>
+      <!-- Error messages -->
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.model.errors?.required">
+            model is required.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.model.errors?.minlength">
+             model should be min 2 chars long.
+         </span>
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.model.errors?.maxlength">
+          model should be max 30 chars long.
+      </span>
+
+
+      <ion-button [disabled]="!productForm.valid" type="submit" expand="block">
+        submit
+        <ion-icon slot="end" name="create"></ion-icon>
+      </ion-button>
+  
+    </ion-list>
+
+  </form>
+
+</ion-content>
