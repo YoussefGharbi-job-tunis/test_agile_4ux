@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
 import { SalesUnitService } from 'src/app/services/salesUnit/sales-unit.service';
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-list-sales-unit',
@@ -21,10 +20,10 @@ export class ListSalesUnitPage implements OnInit {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private router:Router,
-    private firestore: AngularFirestore) { }
+    ) { }
 
   async ngOnInit() {
-   // this.unitList = await this.initializeItems();
+  
    this.loadSalesUnit()
     console.log(this.unitList);
   }
@@ -41,28 +40,7 @@ export class ListSalesUnitPage implements OnInit {
       
     })
   }
- /* async initializeItems(): Promise<any> {
-    const unitList = await this.firestore.collection('salesUnit')
-    .valueChanges().pipe(first()).toPromise();
-    console.log(this.unitList);
-    this.unitListBackup = unitList;
-    return unitList;
-  }
 
-  async filterList(evt) {
-    this.unitList = this.unitListBackup;
-    const searchTerm = evt.srcElement.value;
-  
-    if (!searchTerm) {
-      return;
-    }
-  
-    this.unitList = this.unitList.filter(currentUnit => {
-      if (currentUnit.libelle && searchTerm) {
-        return (currentUnit.libelle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentUnit.libelle.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-      }
-    });
-  }*/
   async delete(id: string) {
     await this.presentLoading()
     try {

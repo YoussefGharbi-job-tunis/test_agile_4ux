@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, LoadingController, ToastController, MenuController } from '@ionic/angular';
+import { Component, OnInit} from '@angular/core';
+import { LoadingController, ToastController, MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { Router } from '@angular/router';

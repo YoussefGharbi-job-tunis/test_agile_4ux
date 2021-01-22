@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { ProdService } from 'src/app/services/products/prod.service';
@@ -22,7 +21,6 @@ export class EditProductPage implements OnInit {
   public product: Product = {};
   public salesUnit=new Array<salesUnit>()  
   private loading: any;
-  private productSubscription: Subscription;
   Categories=new Array<Categorie>()
   subCat=new Array<sousCategorie>()
   selectedFile: any;

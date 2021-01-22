@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SalesUnitService } from 'src/app/services/salesUnit/sales-unit.service';
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { salesUnit } from 'src/app/interfaces/salesUnit';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { first } from 'rxjs/operators';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+
 
 
 
@@ -15,7 +13,6 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
   styleUrls: ['./add-sales-units.page.scss'],
 })
 export class AddSalesUnitsPage implements OnInit {
-  //@ViewChild(Content) content: Content;
  salesobjet :salesUnit ={}
  idSalesUnit:string
   loading: any;

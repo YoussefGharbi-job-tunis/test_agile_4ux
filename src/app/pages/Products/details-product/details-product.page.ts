@@ -21,7 +21,7 @@ export class DetailsProductPage implements OnInit {
   constructor(
     private productService: ProdService,
     private activatedRoute: ActivatedRoute ,
-    private router: Router, private toastCtrl: ToastController,) {
+    private toastCtrl: ToastController,) {
     this.productCode = this.activatedRoute.snapshot.params['productCode'];
 
     if (this.productCode) this.loadProduct();

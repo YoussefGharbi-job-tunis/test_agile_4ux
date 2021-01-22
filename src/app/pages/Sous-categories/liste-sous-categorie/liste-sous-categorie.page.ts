@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoadingController, ToastController, ActionSheetController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SouscatService } from 'src/app/services/sousCategories/souscat.service';

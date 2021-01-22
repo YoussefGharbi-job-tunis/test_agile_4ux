@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { LoadingController, ToastController, ActionSheetController, MenuController } from '@ionic/angular';
 import { Product } from 'src/app/interfaces/product';
 import { ProdService } from 'src/app/services/products/prod.service';
-import { first } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.page.html',
@@ -44,26 +43,6 @@ export class StockPage implements OnInit {
       this.presentToast('error');
     }
   }
-
-
-  
-  async initializeItems(): Promise<any> {
-    const prodList = await this.firestore.collection('Products')
-      .snapshotChanges().pipe(map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;          
-          return { id, ...data };
-        });
-      }),first()).toPromise();
-      
-  
-    return prodList;
-  }
-
-  
-
-
 
   filterList(evt) {
     
